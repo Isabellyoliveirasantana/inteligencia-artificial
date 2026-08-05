@@ -3,63 +3,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Uso Consciente da Inteligência Artificial</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Inteligência Artificial — Interface de Palavras</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Uso Consciente da Inteligência Artificial</h1>
-    <p class="lead">Aprenda a usar a IA como ferramenta de auxílio — não como substituta do seu trabalho.</p>
+    <h1>Inteligência Artificial — Interface Interativa</h1>
+    <p class="subtitle">Arraste as palavras para formar frases, clique para ver mais informações e edite quando precisar.</p>
   </header>
 
   <main>
-    <section class="intro">
-      <h2>Por que usar a IA com responsabilidade?</h2>
-      <ul>
-        <li>A IA pode acelerar tarefas, mas exige verificação humana.</li>
-        <li>Use a IA para apoiar decisões, não para delegar toda a responsabilidade.</li>
-        <li>Preserve privacidade e ética ao tratar dados sensíveis.</li>
-      </ul>
-    </section>
-
-    <section class="activity">
-      <h2>Atividade: Complete as frases (arraste as palavras)</h2>
-      <p>Arraste as palavras do banco até o espaço em branco em cada frase. Você pode clicar numa palavra já colocada para devolvê-la ao banco.</p>
-
-      <div class="sentences" id="sentences">
-        <p>1. A IA deve ser usada como um <span class="blank" data-correct="auxílio" tabindex="0" aria-label="espaço para completar 1">&nbsp;</span>.</p>
-        <p>2. Não devemos deixar a IA fazer todo o <span class="blank" data-correct="trabalho" tabindex="0" aria-label="espaço para completar 2">&nbsp;</span>.</p>
-        <p>3. Use a IA para aumentar a sua <span class="blank" data-correct="produtividade" tabindex="0" aria-label="espaço para completar 3">&nbsp;</span>.</p>
-        <p>4. Verifique e edite resultados da IA com seu <span class="blank" data-correct="julgamento" tabindex="0" aria-label="espaço para completar 4">&nbsp;</span>.</p>
-        <p>5. A IA deve respeitar a <span class="blank" data-correct="privacidade" tabindex="0" aria-label="espaço para completar 5">&nbsp;</span> dos dados.</p>
+    <section class="container">
+      <div class="panel">
+        <h2>Banco de Palavras</h2>
+        <div id="word-bank" class="word-bank" ondrop="event.preventDefault()"></div>
       </div>
 
-      <div class="bank">
-        <h3>Banco de palavras</h3>
-        <div id="wordBank" class="word-bank" aria-live="polite">
-          <!-- palavras serão inseridas pelo script com ordem embaralhada -->
+      <div class="panel center">
+        <h2>Arraste para aqui (Montar frase)</h2>
+        <div id="dropzone" class="dropzone" aria-label="Área para montar frase"></div>
+
+        <div class="output">
+          <label>Frase formada:</label>
+          <div id="sentence" class="sentence" aria-live="polite"></div>
+        </div>
+
+        <div class="controls">
+          <button id="clear">Limpar</button>
+          <button id="shuffle">Embaralhar Banco</button>
         </div>
       </div>
 
-      <div class="controls">
-        <button id="checkBtn">Verificar respostas</button>
-        <button id="resetBtn">Reiniciar atividade</button>
-        <div id="result" class="result" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <section class="tips">
-      <h2>Dicas rápidas</h2>
-      <ol>
-        <li>Revise sempre as respostas geradas pela IA.</li>
-        <li>Use a IA para ganhar tempo em tarefas repetitivas.</li>
-        <li>Combine seu conhecimento com a IA para decisões melhores.</li>
-      </ol>
+      <aside class="panel info-panel">
+        <h2>Informações da Palavra</h2>
+        <div id="info-area" class="info-area">
+          <p>Selecione (clique) em uma palavra para ver ou editar suas informações.</p>
+        </div>
+        <form id="info-form" class="hidden">
+          <label for="word-text">Palavra</label>
+          <input id="word-text" name="word" />
+          <label for="word-info">Informações</label>
+          <textarea id="word-info" name="info" rows="4"></textarea>
+          <div class="form-actions">
+            <button type="button" id="save-info">Salvar</button>
+            <button type="button" id="cancel-info">Cancelar</button>
+          </div>
+        </form>
+      </aside>
     </section>
   </main>
 
   <footer>
-    <small>Feito para promover o uso consciente de IA — projeto educacional.</small>
+    <p>Este projeto é um exemplo simples para arrastar palavras e visualizar mais informações. Código em <a href="https://github.com/Isabellyoliveirasantana/inteligencia-artificial">repo</a>.</p>
   </footer>
 
   <script src="script.js"></script>
